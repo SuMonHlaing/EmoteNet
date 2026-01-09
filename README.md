@@ -52,7 +52,7 @@ data/
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/SuMonHlaing/EmoteNet
 cd EmoteNet
 
 # Create virtual environment
@@ -184,28 +184,6 @@ FC Layer → 7 Emotions
 - Increase `EPOCHS` or adjust `LR`
 - Verify dataset labels are 0-indexed (handled in `dataset.py`)
 - Check image quality and alignment
-
-## 📈 Future Improvements
-
-- [ ] Multi-task learning with auxiliary branches (age, gender prediction)
-- [ ] Ensemble methods combining multiple architectures
-- [ ] Cross-domain adaptation for other emotion datasets
-- [ ] Real-time inference on video streams
-- [ ] Explainability analysis (attention heatmaps, grad-CAM)
-
-## 📝 License
-
-[Add your license here]
-
-## 👥 Authors
-
-Created for facial emotion recognition research and applications.
-
-## 📖 References
-
-- RAF-DB Dataset: [ResearchGate RAF-DB](https://www.researchgate.net/publication/318407527)
-- CBAM Paper: [CBAM: Convolutional Block Attention Module](https://arxiv.org/abs/1807.06521)
-- ResNet Paper: [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
 
 ---
 
