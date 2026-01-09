@@ -144,6 +144,7 @@ CBAM improves ResNet by adding two complementary attention mechanisms:
 The `basic/` and `data/` folders contain large dataset files tracked using Git LFS:
 - `.mat` files (pre-extracted features)
 - `.zip` files (images)
+loremjk
 
 If cloning, ensure Git LFS is installed:
 ```bash
