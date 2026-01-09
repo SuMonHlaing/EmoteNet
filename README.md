@@ -55,7 +55,7 @@ ANNOTATION_FILE = "basic/EmoLabel/list_patition_label.txt"
 
 ```bash
 git lfs install
-git clone <repository-url>
+git clone https://github.com/SuMonHlaing/EmoteNet
 git lfs pull
 ```
 

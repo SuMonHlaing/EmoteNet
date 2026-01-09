@@ -5,13 +5,13 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 from tqdm import tqdm
 
-# Assuming dataset.py and model.py are in the same directory
-from dataset import RAFDBDataset
-from model import ResEmoteNetCBAM # Ensure you update the model.py file as well!
 
-# -----------------------
+from dataset import RAFDBDataset
+from model import ResEmoteNetCBAM 
+
+
 # Config
-# -----------------------
+
 BATCH_SIZE = 16
 EPOCHS = 30
 LR = 1e-4
@@ -19,15 +19,12 @@ NUM_CLASSES = 7
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# NOTE: Adjust these paths if necessary for your environment
+
 DATA_ROOT = "basic/Image/aligned" 
 ANNOTATION_FILE = "basic/EmoLabel/list_patition_label.txt"
 
-
-# -----------------------
 # Transforms
-# -----------------------
-# (Transforms remain unchanged)
+
 train_transform = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.RandomHorizontalFlip(),
@@ -47,9 +44,8 @@ test_transform = transforms.Compose([
     )
 ])
 
-# -----------------------
 # Dataset & DataLoader
-# -----------------------
+
 train_dataset = RAFDBDataset(
     root_dir=DATA_ROOT,
     annotation_file=ANNOTATION_FILE,
@@ -83,10 +79,8 @@ test_loader = DataLoader(
 print(f"Train samples: {len(train_dataset)}")
 print(f"Test samples: {len(test_dataset)}")
 
-# -----------------------
 # Model, Loss, Optimizer
-# -----------------------
-# Ensure model.py has the Dropout layer added as described above!
+
 model = ResEmoteNetCBAM(num_classes=NUM_CLASSES).to(DEVICE)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=LR)
@@ -95,9 +89,8 @@ optimizer = torch.optim.Adam(model.parameters(), lr=LR)
 best_accuracy = 0.0
 MODEL_SAVE_PATH = "models/best_model.pth"
 
-# -----------------------
+
 # Evaluation Function (Test/Validation Accuracy)
-# -----------------------
 def evaluate(model, data_loader, device):
     model.eval()
     correct = 0
@@ -117,9 +110,7 @@ def evaluate(model, data_loader, device):
     accuracy = 100 * correct / total
     return accuracy
 
-# -----------------------
 # Training Loop (Finalized)
-# -----------------------
 for epoch in range(EPOCHS):
     model.train()
     total_loss = 0.0
@@ -159,13 +150,8 @@ for epoch in range(EPOCHS):
         best_accuracy = test_accuracy
         torch.save(model.state_dict(), MODEL_SAVE_PATH)
         print(f"⭐ Model saved! New best validation score: {best_accuracy:.2f}%")
-        
-    # Optional: Early Stopping Check (Basic concept)
-    # If train acc >> test acc, you are overfitting strongly.
 
-# -----------------------
 # Final Output
-# -----------------------
 print("==============================")
 print("✅ Training complete.")
 print(f"Best Test Accuracy achieved (Validation Score): {best_accuracy:.2f}%")
