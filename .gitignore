@@ -1,0 +1,28 @@
+# Ignore the 'basic' dataset folder
+/basic
+# Ignore dataset folders
+/data
+dataset
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+.env
+
+# macOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model artifacts
+*.pt
+*.pth
+
+# Logs and temp
+*.log
+*.tmp
